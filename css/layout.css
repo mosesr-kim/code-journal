@@ -11,11 +11,36 @@
 .row {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
+.justify-end {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .column-full,
 .column-half {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+}
+
+.font-family,
+label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
 }
 
 @media screen and (min-width: 768px) {
@@ -30,5 +55,8 @@
 
   .column-half {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
   }
 }
