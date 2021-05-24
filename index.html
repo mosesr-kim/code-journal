@@ -15,13 +15,25 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div data-view="entry-form">
-    <header>
-    </header>
-    <main>
-    </main>
-  </div>
-  <script src="js/data.js"></script>
+  <header>
+  </header>
+  <main>
+  </main>
+  <form action="" class="entry-form">
+    <div data-view="entry-form">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title">
+    </div>
+    <div data-view="entry-form">
+      <label for="photoURL">Photo URL</label>
+      <input type="text" name="photoURL" id="photoURL">
+    </div>
+    <div data-view="entry-form">
+      <label for="notes">Notes</label>
+      <input type="text" name="notes" id="notes">
+    </div>
+  </form>
+<script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
