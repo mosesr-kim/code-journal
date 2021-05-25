@@ -38,6 +38,10 @@ textarea:focus {
   outline-color: #552b81;
 }
 
+.notes {
+  width: 100%;
+}
+
 button {
   color: white;
   background-color: #552b81;
