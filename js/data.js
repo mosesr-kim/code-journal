@@ -1,5 +1,4 @@
 /* exported data */
-
 var data = {
   view: 'entry-form',
   entries: [],
@@ -7,4 +6,12 @@ var data = {
   nextEntryId: 1
 };
 
-// var inputStorage = window.localStorage;
+window.addEventListener('beforeunload', function (event) {
+  var inputsJSON = JSON.stringify(data);
+  window.localStorage.setItem('entry-storage', inputsJSON);
+});
+
+var previousInputsJSON = localStorage.getItem('entry-storage');
+if (previousInputsJSON !== null) {
+  data = (JSON.parse(previousInputsJSON));
+}
