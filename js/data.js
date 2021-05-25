@@ -19,4 +19,5 @@ $entryForm.addEventListener('submit', function (event) {
   inputs.notes = $notes.value;
   inputs.entryID = data.nextEntryId;
   data.nextEntryId++;
+  data.entries.push(inputs);
 });
