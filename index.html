@@ -27,7 +27,7 @@
   <main>
     <form action="" class="entry-form">
       <div data-view="entry-form">
-        <div class="container">
+        <div class="container hidden">
 
           <div class="row font-family">
             <h1>
@@ -69,13 +69,65 @@
           </div>
         </div>
       </div>
-
-      <div data-view="entries">
-        <ol>
-
-        </ol>
-      </div>
     </form>
+
+    <div class="container">
+      <div data-view="entries">
+        <div class="row font-family space-between">
+          <h1>
+            Entries
+          </h1>
+          <a href="" class="newButton">NEW</a>
+        </div>
+
+        <div class="row font-family justify-center hidden">
+          <h3>
+            No entries have been recorded.
+          </h3>
+        </div>
+
+        <div class="row">
+          <ul class="remove-bullet padding-left-0">
+            <li class="margin-bot-25">
+              <div class="row">
+                <div class="column-half">
+                  <img src="images/placeholder-image-square.jpg" alt="placeholder img"
+                  class="image margin-bot-25">
+                </div>
+                <div class="column-half padding-right-0">
+                  <h1 class="font-family margin-none">
+                    Test Header
+                  </h1>
+                  <p>
+                    This is a test paragraph so that I can see what font I would need.
+                    Also to check the line height for the paragraph.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="row">
+                <div class="column-half">
+                  <img src="images/placeholder-image-square.jpg" alt="placeholder img"
+                  class="image margin-bot-25">
+                </div>
+                <div class="column-half padding-right-0">
+                  <h1 class="font-family margin-none">
+                    Test Header 2
+                  </h1>
+                  <p>
+                    This is another paragraph just for testing.
+                    I need enough words to get line breaks.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
