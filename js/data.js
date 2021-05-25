@@ -6,3 +6,5 @@ var data = {
   editing: null,
   nextEntryId: 1
 };
+
+// var inputStorage = window.localStorage;
