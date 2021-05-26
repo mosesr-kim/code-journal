@@ -8,31 +8,18 @@ var $notes = document.querySelector('.notes');
 var $ul = document.querySelector('ul');
 var $noEntries = document.getElementById('noEntries');
 var $newButton = document.querySelector('.newButton');
-var $divHidden = document.querySelector('.hidden');
-var $divContainer = document.querySelectorAll('.container');
-var $divContainerLast = $divContainer[$divContainer.length - 1];
 var $entries = document.querySelector('.entries');
+var $view = document.querySelectorAll('.view');
 
-$photoURL.addEventListener('input', function (event) {
-  $image.setAttribute('src', $photoURL.value);
-});
-
-$entryForm.addEventListener('submit', function (event) {
-  event.preventDefault();
-  var inputs = {};
-  inputs.title = $title.value;
-  inputs.photoURL = $photoURL.value;
-  inputs.notes = $notes.value;
-  inputs.entryID = data.nextEntryId;
-  data.nextEntryId++;
-  data.entries.push(inputs);
-  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $entryForm.reset();
-  addEntry(data.entries[data.entries.length - 1]);
-  $divHidden.setAttribute('class', 'hidden');
-  $divContainerLast.setAttribute('class', 'container');
-  $noEntries.setAttribute('class', 'hidden');
-});
+function viewSwap() {
+  for (var i = 0; i < $view.length; i++) {
+    if ($view[i].getAttribute('data-view') === data.view) {
+      $view[i].setAttribute('class', 'container');
+    } else {
+      $view[i].setAttribute('class', 'hidden');
+    }
+  }
+}
 
 function addEntry(object) {
   var newEntry = entryDOMTree(object);
@@ -78,23 +65,37 @@ window.addEventListener('DOMContentLoaded', function (event) {
   }
   for (var i = 0; i < data.entries.length; i++) {
     var newEntry = entryDOMTree(data.entries[i]);
-    $ul.insertBefore(newEntry, $ul.childNodes[0]);
+    $ul.prepend(newEntry);
   }
-  if (data.view === 'entry-form') {
-    $divHidden.setAttribute('class', 'container');
-    $divContainerLast.setAttribute('class', 'hidden');
-  }
-  if (data.view === 'entries') {
-    $divContainerLast.setAttribute('class', 'container');
-  }
+  viewSwap();
+});
+
+$photoURL.addEventListener('input', function (event) {
+  $image.setAttribute('src', $photoURL.value);
+});
+
+$entryForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  var inputs = {};
+  inputs.title = $title.value;
+  inputs.photoURL = $photoURL.value;
+  inputs.notes = $notes.value;
+  inputs.entryID = data.nextEntryId;
+  data.nextEntryId++;
+  data.entries.push(inputs);
+  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $entryForm.reset();
+  addEntry(data.entries[data.entries.length - 1]);
+  data.view = 'entries';
+  viewSwap();
 });
 
 $newButton.addEventListener('click', function (event) {
-  $divHidden.setAttribute('class', 'container');
-  $divContainerLast.setAttribute('class', 'container hidden');
+  data.view = 'entry-form';
+  viewSwap();
 });
 
 $entries.addEventListener('click', function (event) {
-  $divHidden.setAttribute('class', 'hidden');
-  $divContainerLast.setAttribute('class', 'container');
+  data.view = 'entries';
+  viewSwap();
 });

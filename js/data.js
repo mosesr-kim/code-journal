@@ -6,14 +6,7 @@ var data = {
   nextEntryId: 1
 };
 
-var $view = document.querySelectorAll('.view');
-
 window.addEventListener('beforeunload', function (event) {
-  for (var i = 0; i < $view.length; i++) {
-    if (!$view[i].classList.value.includes('hidden')) {
-      data.view = $view[i].getAttribute('data-view');
-    }
-  }
   var inputsJSON = JSON.stringify(data);
   window.localStorage.setItem('entry-storage', inputsJSON);
 });
