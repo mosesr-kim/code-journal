@@ -57,15 +57,15 @@ function entryDOMTree(object) {
   divHeaderRow.appendChild(divColHeader);
 
   var divColIcon = document.createElement('div');
-  divColIcon.setAttribute('class', 'column-half');
+  divColIcon.setAttribute('class', 'column-half align-end');
   divHeaderRow.appendChild(divColIcon);
 
   var header = document.createElement('h1');
   header.setAttribute('class', 'font-family margin-none');
   divColHeader.appendChild(header);
 
-  var icon = document.createElement('h2');
-  icon.setAttribute('class', 'fas fa-pen justify-end margin-none purple');
+  var icon = document.createElement('i');
+  icon.setAttribute('class', 'fas fa-pen purple');
   divColIcon.appendChild(icon);
 
   var paragraph = document.createElement('p');
@@ -116,4 +116,7 @@ $entries.addEventListener('click', function (event) {
 });
 
 $ul.addEventListener('click', function (event) {
+  if (event.target.className.includes('fas')) {
+    viewSwap('entry-form');
+  }
 });
