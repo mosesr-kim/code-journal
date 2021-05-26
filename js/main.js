@@ -114,3 +114,6 @@ $newButton.addEventListener('click', function (event) {
 $entries.addEventListener('click', function (event) {
   viewSwap('entries');
 });
+
+$ul.addEventListener('click', function (event) {
+});
