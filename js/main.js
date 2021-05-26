@@ -11,7 +11,8 @@ var $newButton = document.querySelector('.newButton');
 var $entries = document.querySelector('.entries');
 var $view = document.querySelectorAll('.view');
 
-function viewSwap() {
+function viewSwap(string) {
+  data.view = string;
   for (var i = 0; i < $view.length; i++) {
     if ($view[i].getAttribute('data-view') === data.view) {
       $view[i].setAttribute('class', 'container');
@@ -67,7 +68,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
     var newEntry = entryDOMTree(data.entries[i]);
     $ul.prepend(newEntry);
   }
-  viewSwap();
+  viewSwap(data.view);
 });
 
 $photoURL.addEventListener('input', function (event) {
@@ -86,16 +87,13 @@ $entryForm.addEventListener('submit', function (event) {
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
   addEntry(data.entries[data.entries.length - 1]);
-  data.view = 'entries';
-  viewSwap();
+  viewSwap('entries');
 });
 
 $newButton.addEventListener('click', function (event) {
-  data.view = 'entry-form';
-  viewSwap();
+  viewSwap('entry-form');
 });
 
 $entries.addEventListener('click', function (event) {
-  data.view = 'entries';
-  viewSwap();
+  viewSwap('entries');
 });
