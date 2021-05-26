@@ -23,6 +23,7 @@ $entryForm.addEventListener('submit', function (event) {
   addEntry(data.entries[data.entries.length - 1]);
   $divHidden.setAttribute('class', 'hidden');
   $divContainerLast.setAttribute('class', 'container');
+  $noEntries.setAttribute('class', 'hidden');
 });
 
 function addEntry(object) {
