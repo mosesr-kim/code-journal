@@ -29,6 +29,7 @@ function addEntry(object) {
 
 function entryDOMTree(object) {
   var liOut = document.createElement('li');
+  liOut.setAttribute('data-entry-id', object.entryID);
 
   var divRow = document.createElement('div');
   divRow.setAttribute('class', 'row');
