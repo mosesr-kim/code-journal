@@ -20,7 +20,16 @@ $entryForm.addEventListener('submit', function (event) {
   data.entries.push(inputs);
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
+  addEntry(data.entries[data.entries.length - 1]);
+  $divHidden.setAttribute('class', 'hidden');
+  $divContainerLast.setAttribute('class', 'container');
 });
+
+function addEntry(object) {
+  var $ul = document.querySelector('ul');
+  var newEntry = entryDOMTree(object);
+  $ul.prepend(newEntry);
+}
 
 function entryDOMTree(object) {
   var liOut = document.createElement('li');
@@ -55,10 +64,24 @@ function entryDOMTree(object) {
   return liOut;
 }
 
+var $noEntries = document.getElementById('noEntries');
+if (data.entries.length === 0) {
+  $noEntries.setAttribute('class', 'row font-family justify-center');
+}
+
 window.addEventListener('DOMContentLoaded', function (event) {
   var $ul = document.querySelector('ul');
   for (var i = 0; i < data.entries.length; i++) {
     var newEntry = entryDOMTree(data.entries[i]);
     $ul.insertBefore(newEntry, $ul.childNodes[0]);
   }
+});
+
+var $newButton = document.querySelector('.newButton');
+var $divHidden = document.querySelector('.hidden');
+var $divContainer = document.querySelectorAll('.container');
+var $divContainerLast = $divContainer[$divContainer.length - 1];
+$newButton.addEventListener('click', function (event) {
+  $divHidden.setAttribute('class', 'container');
+  $divContainerLast.setAttribute('class', 'container hidden');
 });
