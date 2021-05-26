@@ -11,8 +11,8 @@ var $newButton = document.querySelector('.newButton');
 var $entries = document.querySelector('.entries');
 var $view = document.querySelectorAll('.view');
 
-function viewSwap(string) {
-  data.view = string;
+function viewSwap(viewName) {
+  data.view = viewName;
   for (var i = 0; i < $view.length; i++) {
     if ($view[i].getAttribute('data-view') === data.view) {
       $view[i].setAttribute('class', 'container');
