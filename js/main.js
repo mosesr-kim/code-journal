@@ -47,9 +47,25 @@ function entryDOMTree(object) {
   img.setAttribute('class', 'image margin-bot-25');
   divColImg.appendChild(img);
 
+  var divHeaderRow = document.createElement('div');
+  divHeaderRow.setAttribute('class', 'row');
+  divColText.appendChild(divHeaderRow);
+
+  var divColHeader = document.createElement('div');
+  divColHeader.setAttribute('class', 'column-half');
+  divHeaderRow.appendChild(divColHeader);
+
+  var divColIcon = document.createElement('div');
+  divColIcon.setAttribute('class', 'column-half');
+  divHeaderRow.appendChild(divColIcon);
+
   var header = document.createElement('h1');
   header.setAttribute('class', 'font-family margin-none');
-  divColText.appendChild(header);
+  divColHeader.appendChild(header);
+
+  var icon = document.createElement('h2');
+  icon.setAttribute('class', 'fas fa-pen justify-end margin-none purple');
+  divColIcon.appendChild(icon);
 
   var paragraph = document.createElement('p');
   divColText.appendChild(paragraph);
