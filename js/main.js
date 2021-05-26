@@ -2,13 +2,21 @@
 /* exported data */
 var $photoURL = document.querySelector('.photoURL');
 var $image = document.querySelector('.image');
+var $entryForm = document.querySelector('.entry-form');
+var $title = document.querySelector('.title');
+var $notes = document.querySelector('.notes');
+var $ul = document.querySelector('ul');
+var $noEntries = document.getElementById('noEntries');
+var $newButton = document.querySelector('.newButton');
+var $divHidden = document.querySelector('.hidden');
+var $divContainer = document.querySelectorAll('.container');
+var $divContainerLast = $divContainer[$divContainer.length - 1];
+var $entries = document.querySelector('.entries');
+
 $photoURL.addEventListener('input', function (event) {
   $image.setAttribute('src', $photoURL.value);
 });
 
-var $entryForm = document.querySelector('.entry-form');
-var $title = document.querySelector('.title');
-var $notes = document.querySelector('.notes');
 $entryForm.addEventListener('submit', function (event) {
   event.preventDefault();
   var inputs = {};
@@ -27,7 +35,6 @@ $entryForm.addEventListener('submit', function (event) {
 });
 
 function addEntry(object) {
-  var $ul = document.querySelector('ul');
   var newEntry = entryDOMTree(object);
   $ul.prepend(newEntry);
 }
@@ -65,24 +72,29 @@ function entryDOMTree(object) {
   return liOut;
 }
 
-var $noEntries = document.getElementById('noEntries');
-if (data.entries.length === 0) {
-  $noEntries.setAttribute('class', 'row font-family justify-center');
-}
-
 window.addEventListener('DOMContentLoaded', function (event) {
-  var $ul = document.querySelector('ul');
+  if (data.entries.length === 0) {
+    $noEntries.setAttribute('class', 'row font-family justify-center');
+  }
   for (var i = 0; i < data.entries.length; i++) {
     var newEntry = entryDOMTree(data.entries[i]);
     $ul.insertBefore(newEntry, $ul.childNodes[0]);
   }
+  if (data.view === 'entry-form') {
+    $divHidden.setAttribute('class', 'container');
+    $divContainerLast.setAttribute('class', 'hidden');
+  }
+  if (data.view === 'entries') {
+    $divContainerLast.setAttribute('class', 'container');
+  }
 });
 
-var $newButton = document.querySelector('.newButton');
-var $divHidden = document.querySelector('.hidden');
-var $divContainer = document.querySelectorAll('.container');
-var $divContainerLast = $divContainer[$divContainer.length - 1];
 $newButton.addEventListener('click', function (event) {
   $divHidden.setAttribute('class', 'container');
   $divContainerLast.setAttribute('class', 'container hidden');
+});
+
+$entries.addEventListener('click', function (event) {
+  $divHidden.setAttribute('class', 'hidden');
+  $divContainerLast.setAttribute('class', 'container');
 });
