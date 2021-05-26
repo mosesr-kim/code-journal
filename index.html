@@ -18,58 +18,81 @@
 <body>
   <div class="row">
     <header>
-      <h1 class="head font-family padding-10 container">
-        Code Journal
-      </h1>
+      <div class="container">
+        <div class="column-half">
+          <div class="row no-wrap">
+            <div class="column-half">
+              <h1 class="head font-family padding-10 margin-none">
+                Code Journal
+              </h1>
+            </div>
+            <div class="column-half justify-center font-family">
+              <a href="" class="entries">
+                Entries
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
   </div>
-
   <main>
     <form action="" class="entry-form">
-      <div data-view="entry-form">
-        <div class="container">
-
-          <div class="row font-family">
-            <h1>
-              New Entry
-            </h1>
+      <div data-view="entry-form" class="view container hidden">
+        <div class="row font-family">
+          <h1>
+            New Entry
+          </h1>
+        </div>
+        <div class="row margin-bot-25">
+          <div class="column-half padding-10">
+            <img src="images/placeholder-image-square.jpg" alt="placeholder img" class="image">
           </div>
-
-          <div class="row margin-bot-25">
-            <div class="column-half padding-10">
-              <img src="images/placeholder-image-square.jpg" alt="placeholder img" class="image">
-            </div>
-            <div class="column-half padding-10">
-              <div class="row">
-                <label for="title">Title</label>
-              </div>
-              <div class="row padding-10 margin-bot-25">
-                <input type="text" name="title" id="title" class="title width-100" required>
-              </div>
-              <div class="row">
-                <label for="photoURL">Photo URL</label>
-              </div>
-              <div class="row padding-10">
-                <input type="text" name="photoURL" id="photoURL" class="photoURL width-100" required>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
+          <div class="column-half padding-10">
             <div class="row">
-              <label for="notes">Notes</label>
+              <label for="title">Title</label>
+            </div>
+            <div class="row padding-10 margin-bot-25">
+              <input type="text" name="title" id="title" class="title width-100" required>
+            </div>
+            <div class="row">
+              <label for="photoURL">Photo URL</label>
             </div>
             <div class="row padding-10">
-              <textarea name="notes" id="notes" cols="100" rows="10" class="notes" required></textarea>
-            </div>
-            <div class="row justify-end padding-10">
-              <button type="sumbit">SAVE</button>
+              <input type="text" name="photoURL" id="photoURL" class="photoURL width-100" required>
             </div>
           </div>
-
+        </div>
+        <div class="row">
+          <div class="row">
+            <label for="notes">Notes</label>
+          </div>
+          <div class="row padding-10">
+            <textarea name="notes" id="notes" cols="100" rows="10" class="notes" required></textarea>
+          </div>
+          <div class="row justify-end padding-10">
+            <button type="submit">SAVE</button>
+          </div>
         </div>
       </div>
     </form>
+    <div class="view container" data-view="entries">
+      <div class="row font-family space-between">
+        <h1>
+          Entries
+        </h1>
+        <a href="#" class="newButton">NEW</a>
+      </div>
+      <div class="row font-family justify-center hidden" id="noEntries">
+        <h3>
+          No entries have been recorded.
+        </h3>
+      </div>
+      <div class="row">
+        <ul class="remove-bullet padding-left-0">
+        </ul>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
