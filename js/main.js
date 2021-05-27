@@ -11,6 +11,7 @@ var $newButton = document.querySelector('.newButton');
 var $entries = document.querySelector('.entries');
 var $view = document.querySelectorAll('.view');
 var $newEntry = document.querySelector('.newEntry');
+var $saveRow = document.getElementById('save');
 
 function viewSwap(viewName) {
   data.view = viewName;
@@ -144,6 +145,7 @@ $ul.addEventListener('click', function (event) {
   if (event.target.className.includes('fas')) {
     viewSwap('entry-form');
     $newEntry.textContent = 'Edit Entry';
+    deleteButton.setAttribute('class', 'deleteButton');
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryID.toString() ===
       event.target.closest('li').getAttribute('data-entry-id')) {
@@ -155,4 +157,12 @@ $ul.addEventListener('click', function (event) {
       }
     }
   }
+});
+
+var deleteButton = document.createElement('a');
+deleteButton.textContent = 'Delete Entry';
+deleteButton.setAttribute('class', 'deleteButton hidden');
+$saveRow.prepend(deleteButton);
+
+deleteButton.addEventListener('click', function (event) {
 });

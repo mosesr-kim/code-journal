@@ -59,6 +59,12 @@ p {
   line-height: 1.6;
 }
 
+.deleteButton {
+  font-family: Arial, Helvetica, sans-serif;
+  color: red;
+  text-decoration: underline;
+}
+
 .newButton {
   text-decoration: none;
   text-align: center;
