@@ -50,24 +50,20 @@ function entryDOMTree(object) {
   divColImg.appendChild(img);
 
   var divHeaderRow = document.createElement('div');
-  divHeaderRow.setAttribute('class', 'row no-wrap');
+  divHeaderRow.setAttribute('class', 'row no-wrap space-between');
   divColText.appendChild(divHeaderRow);
-
-  var divColHeader = document.createElement('div');
-  divColHeader.setAttribute('class', 'column-half');
-  divHeaderRow.appendChild(divColHeader);
-
-  var divColIcon = document.createElement('div');
-  divColIcon.setAttribute('class', 'column-half align-end');
-  divHeaderRow.appendChild(divColIcon);
 
   var header = document.createElement('h1');
   header.setAttribute('class', 'font-family margin-none');
-  divColHeader.appendChild(header);
+  divHeaderRow.appendChild(header);
+
+  var iconColumn = document.createElement('div');
+  iconColumn.setAttribute('class', 'column');
+  divHeaderRow.appendChild(iconColumn);
 
   var icon = document.createElement('i');
-  icon.setAttribute('class', 'fas fa-pen purple');
-  divColIcon.appendChild(icon);
+  icon.setAttribute('class', 'fas fa-pen purple justify-end');
+  iconColumn.appendChild(icon);
 
   var paragraph = document.createElement('p');
   divColText.appendChild(paragraph);
@@ -128,9 +124,9 @@ $entryForm.addEventListener('submit', function (event) {
 });
 
 $newButton.addEventListener('click', function (event) {
+  viewSwap('entry-form');
   $entryForm.reset();
   data.editing = null;
-  viewSwap('entry-form');
 });
 
 $entries.addEventListener('click', function (event) {

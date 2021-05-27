@@ -56,6 +56,11 @@
   font-weight: 400;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
