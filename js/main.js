@@ -50,7 +50,7 @@ function entryDOMTree(object) {
   divColImg.appendChild(img);
 
   var divHeaderRow = document.createElement('div');
-  divHeaderRow.setAttribute('class', 'row');
+  divHeaderRow.setAttribute('class', 'row no-wrap');
   divColText.appendChild(divHeaderRow);
 
   var divColHeader = document.createElement('div');
