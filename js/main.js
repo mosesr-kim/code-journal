@@ -121,8 +121,13 @@ $ul.addEventListener('click', function (event) {
     viewSwap('entry-form');
     $newEntry.textContent = 'Edit Entry';
     for (var i = 0; i < data.entries.length; i++) {
-      if (data.entries[i].entryID.toString() === event.target.closest('li').getAttribute('data-entry-id')) {
+      if (data.entries[i].entryID.toString() ===
+      event.target.closest('li').getAttribute('data-entry-id')) {
         data.editing = data.entries[i];
+        $title.setAttribute('value', data.editing.title);
+        $photoURL.setAttribute('value', data.editing.photoURL);
+        $image.setAttribute('src', data.editing.photoURL);
+        $notes.textContent = data.editing.notes;
       }
     }
   }
