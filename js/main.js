@@ -105,6 +105,7 @@ $entryForm.addEventListener('submit', function (event) {
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
   addEntry(data.entries[data.entries.length - 1]);
+  $noEntries.setAttribute('class', 'hidden');
   viewSwap('entries');
 });
 
