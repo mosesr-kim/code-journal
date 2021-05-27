@@ -148,10 +148,10 @@ $ul.addEventListener('click', function (event) {
       if (data.entries[i].entryID.toString() ===
       event.target.closest('li').getAttribute('data-entry-id')) {
         data.editing = data.entries[i];
-        $title.setAttribute('value', data.editing.title);
-        $photoURL.setAttribute('value', data.editing.photoURL);
+        $title.value = data.editing.title;
+        $photoURL.value = data.editing.photoURL;
         $image.setAttribute('src', data.editing.photoURL);
-        $notes.textContent = data.editing.notes;
+        $notes.value = data.editing.notes;
       }
     }
   }
