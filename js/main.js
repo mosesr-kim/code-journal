@@ -10,6 +10,7 @@ var $noEntries = document.getElementById('noEntries');
 var $newButton = document.querySelector('.newButton');
 var $entries = document.querySelector('.entries');
 var $view = document.querySelectorAll('.view');
+var $newEntry = document.querySelector('.newEntry');
 
 function viewSwap(viewName) {
   data.view = viewName;
@@ -118,5 +119,11 @@ $entries.addEventListener('click', function (event) {
 $ul.addEventListener('click', function (event) {
   if (event.target.className.includes('fas')) {
     viewSwap('entry-form');
+    $newEntry.textContent = 'Edit Entry';
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryID.toString() === event.target.closest('li').getAttribute('data-entry-id')) {
+        data.editing = data.entries[i];
+      }
+    }
   }
 });
