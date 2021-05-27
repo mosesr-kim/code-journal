@@ -16,9 +16,9 @@ function viewSwap(viewName) {
   data.view = viewName;
   for (var i = 0; i < $view.length; i++) {
     if ($view[i].getAttribute('data-view') === data.view) {
-      $view[i].setAttribute('class', 'container');
+      $view[i].setAttribute('class', 'view container');
     } else {
-      $view[i].setAttribute('class', 'hidden');
+      $view[i].setAttribute('class', 'view hidden');
     }
   }
 }
@@ -26,6 +26,13 @@ function viewSwap(viewName) {
 function addEntry(object) {
   var newEntry = entryDOMTree(object);
   $ul.prepend(newEntry);
+}
+
+function clearEntryForm() {
+  // this is necessary because the value of all inputs is set manually for editing. if the form is reset using the reset method, nothing happens, since they are reverted to their last assigned value. this manually clears all inputs to be empty
+  $entryForm.elements.title.value = '';
+  $entryForm.elements.photoURL.value = '';
+  $entryForm.elements.notes.value = '';
 }
 
 function entryDOMTree(object) {
@@ -102,7 +109,7 @@ $entryForm.addEventListener('submit', function (event) {
         $liEntryId[i].replaceWith(entryDOMTree(data.editing));
         data.editing = null;
         $image.setAttribute('src', 'images/placeholder-image-square.jpg');
-        $entryForm.reset();
+        clearEntryForm();
         $noEntries.setAttribute('class', 'hidden');
         viewSwap('entries');
         return;
@@ -125,7 +132,7 @@ $entryForm.addEventListener('submit', function (event) {
 
 $newButton.addEventListener('click', function (event) {
   viewSwap('entry-form');
-  $entryForm.reset();
+  clearEntryForm();
   data.editing = null;
 });
 
