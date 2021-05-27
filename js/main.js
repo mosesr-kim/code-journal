@@ -121,7 +121,6 @@ $entryForm.addEventListener('submit', function (event) {
   data.nextEntryId++;
   data.entries.push(inputs);
   addEntry(data.entries[data.entries.length - 1]);
-  data.editing = null;
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $entryForm.reset();
   $noEntries.setAttribute('class', 'hidden');
