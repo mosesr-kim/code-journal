@@ -121,3 +121,18 @@ p {
   display: flex;
   flex-wrap: nowrap;
 }
+
+.modalContainer {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.75);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal {
+  background-color: white;
+  width: 50vh;
+  height: 25vh;
+}
