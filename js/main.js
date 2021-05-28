@@ -200,6 +200,7 @@ $confirmButtom.addEventListener('click', function (event) {
     if (data.entries.length === 0) {
       $noEntries.setAttribute('class', 'row font-family justify-center');
     }
+    $image.setAttribute('src', 'images/placeholder-image-square.jpg');
     $modalContainer.setAttribute('class', 'hidden');
     viewSwap('entries');
   }
