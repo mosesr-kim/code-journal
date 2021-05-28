@@ -197,6 +197,9 @@ $confirmButtom.addEventListener('click', function (event) {
         data.entries.splice(z, 1);
       }
     }
+    if (data.entries.length === 0) {
+      $noEntries.setAttribute('class', 'row font-family justify-center');
+    }
     $modalContainer.setAttribute('class', 'hidden');
     viewSwap('entries');
   }
