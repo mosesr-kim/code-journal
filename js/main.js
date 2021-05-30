@@ -15,6 +15,7 @@ var $saveRow = document.getElementById('save');
 var $modalContainer = document.querySelector('.modalContainer');
 var $cancelButton = document.querySelector('.cancelButton');
 var $confirmButtom = document.querySelector('.confirmButton');
+var $deleteButton = document.querySelector('.deleteButton');
 
 function viewSwap(viewName) {
   data.view = viewName;
@@ -149,8 +150,7 @@ $ul.addEventListener('click', function (event) {
     viewSwap('entry-form');
     $newEntry.textContent = 'Edit Entry';
     $saveRow.setAttribute('class', 'row space-between padding-10');
-    $saveRow.prepend(deleteButton);
-    deleteButton.setAttribute('class', 'deleteButton');
+    $deleteButton.setAttribute('class', 'deleteButton');
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryID.toString() ===
       event.target.closest('li').getAttribute('data-entry-id')) {
@@ -164,13 +164,8 @@ $ul.addEventListener('click', function (event) {
   }
 });
 
-var deleteButton = document.createElement('a');
-deleteButton.textContent = 'Delete Entry';
-deleteButton.setAttribute('class', 'deleteButton hidden');
-
-deleteButton.addEventListener('click', function (event) {
+$deleteButton.addEventListener('click', function (event) {
   $modalContainer.setAttribute('class', 'modalContainer');
-  // console.log('hello');
 });
 
 $cancelButton.addEventListener('click', function (event) {
