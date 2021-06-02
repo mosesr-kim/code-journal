@@ -179,7 +179,6 @@ $cancelButton.addEventListener('click', function (event) {
 $confirmButtom.addEventListener('click', function (event) {
   event.preventDefault();
   var $liEntryId = document.querySelectorAll('[data-entry-id]');
-  event.preventDefault();
   if (event.target.className === 'confirmButton') {
     for (var i = 0; i < $liEntryId.length; i++) {
       if (data.editing.entryID.toString() ===
