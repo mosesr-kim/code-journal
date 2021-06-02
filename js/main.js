@@ -11,6 +11,11 @@ var $newButton = document.querySelector('.newButton');
 var $entries = document.querySelector('.entries');
 var $view = document.querySelectorAll('.view');
 var $newEntry = document.querySelector('.newEntry');
+var $saveRow = document.getElementById('save');
+var $modalContainer = document.querySelector('.modalContainer');
+var $cancelButton = document.querySelector('.cancelButton');
+var $confirmButtom = document.querySelector('.confirmButton');
+var $deleteButton = document.querySelector('.deleteButton');
 
 function viewSwap(viewName) {
   data.view = viewName;
@@ -144,6 +149,8 @@ $ul.addEventListener('click', function (event) {
   if (event.target.className.includes('fas')) {
     viewSwap('entry-form');
     $newEntry.textContent = 'Edit Entry';
+    $saveRow.setAttribute('class', 'row space-between padding-10');
+    $deleteButton.setAttribute('class', 'deleteButton');
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryID.toString() ===
       event.target.closest('li').getAttribute('data-entry-id')) {
@@ -154,5 +161,41 @@ $ul.addEventListener('click', function (event) {
         $notes.value = data.editing.notes;
       }
     }
+  }
+});
+
+$deleteButton.addEventListener('click', function (event) {
+  $modalContainer.setAttribute('class', 'modalContainer');
+});
+
+$cancelButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  if (event.target.className === 'cancelButton') {
+    $modalContainer.setAttribute('class', 'hidden');
+    viewSwap('entry-form');
+  }
+});
+
+$confirmButtom.addEventListener('click', function (event) {
+  event.preventDefault();
+  var $liEntryId = document.querySelectorAll('[data-entry-id]');
+  if (event.target.className === 'confirmButton') {
+    for (var i = 0; i < $liEntryId.length; i++) {
+      if (data.editing.entryID.toString() ===
+        $liEntryId[i].getAttribute('data-entry-id')) {
+        $liEntryId[i].remove();
+      }
+    }
+    for (var z = 0; z < data.entries.length; z++) {
+      if (data.editing.entryID === data.entries[z].entryID) {
+        data.entries.splice(z, 1);
+      }
+    }
+    if (data.entries.length === 0) {
+      $noEntries.setAttribute('class', 'row font-family justify-center');
+    }
+    $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $modalContainer.setAttribute('class', 'hidden');
+    viewSwap('entries');
   }
 });

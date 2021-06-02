@@ -70,8 +70,24 @@
           <div class="row padding-10">
             <textarea name="notes" id="notes" cols="100" rows="10" class="notes" required></textarea>
           </div>
-          <div class="row justify-end padding-10">
+          <div class="row justify-end padding-10" id="save">
+            <a href="#" class="deleteButton hidden">Delete Entry</a>
             <button type="submit">SAVE</button>
+          </div>
+        </div>
+        <div class="modalContainer hidden">
+          <div class="modal">
+            <div class="row modalText justify-center">
+              Are you sure want to delete this entry?
+            </div>
+            <div class="row modalButtons space-between">
+              <button class="cancelButton">
+                CANCEL
+              </button>
+              <button class="confirmButton">
+                CONFIRM
+              </button>
+            </div>
           </div>
         </div>
       </form>
